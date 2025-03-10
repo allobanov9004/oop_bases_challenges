@@ -1,5 +1,5 @@
 """
-У нас есть класс UserManager, который содержит в себе спискок юзернэймов пользователей и может расширять этот список.
+У нас есть класс UserManager, который содержит в себе список юзернэймов пользователей и может расширять этот список.
 
 Задания:
     1. Создайте класс AdminManager, который будет наследником UserManager.
@@ -22,9 +22,38 @@ class UserManager:
         return self.usernames
 
 
-# код писать тут
+class AdminManager(UserManager):
+    def ban_username(self, username: str):
+        if username in self.usernames:
+            self.usernames.remove(username)
+        else:
+            print('Такого пользователя не существует.')
+    
+class SuperAdminManager(AdminManager):
+    def ban_all_users(self):
+        return self.usernames.clear()
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    user = UserManager()
+    user.add_user("1")
+    user.add_user("2")
 
+    print(user.get_users())
+
+    admin = AdminManager()
+    admin.add_user("3")
+    admin.add_user("4")
+    admin.ban_username("2")
+    admin.ban_username("3")
+    print(admin.get_users())
+
+    superadmin = SuperAdminManager()
+    superadmin.add_user("5")
+    superadmin.add_user("6")
+    superadmin.add_user("7")
+    print(superadmin.get_users())
+    superadmin.ban_username("6")
+    print(superadmin.get_users())
+    superadmin.ban_all_users()
+    print(superadmin.get_users())
