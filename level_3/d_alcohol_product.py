@@ -26,11 +26,13 @@ class Product:
 
 
 class AlcoholProduct(Product):
-    def is_available(self):
+     def is_available(self):
+        saletime_start = 5
+        saletime_finish = 23
         time = datetime.now().hour
-        return super().is_available() and 5 < time <= 23
+        return super().is_available() and saletime_start < time <= saletime_finish
 
 
 if __name__ == '__main__':
-    jin = AlcoholProduct("jin", 800, 15)
-    print(jin.is_available())
+    gin = AlcoholProduct("gin", 800, 15)
+    print(gin.is_available())

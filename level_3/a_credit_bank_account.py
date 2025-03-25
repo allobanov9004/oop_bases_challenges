@@ -14,7 +14,10 @@ class BankAccount:
         self.owner_full_name = owner_full_name
         self.balance = balance
     def increase_balance(self, amount: float):
-        self.balance += amount
+        if amount > 0:
+            self.balance += amount
+        else: 
+            print("пополнение должно быть положительным")
 
     def decrease_balance(self, amount: float):
         self.balance -= amount

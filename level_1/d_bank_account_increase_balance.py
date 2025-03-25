@@ -15,7 +15,8 @@ class BankAccount:
         self.balance = balance
 
     def increase_balance(self, income: float):
-        self.balance += income
+        if income > 0:
+            self.balance += income
 
 
 
@@ -24,3 +25,4 @@ if __name__ == '__main__':
     print(my_account.balance)
     my_account.increase_balance(500)
     print(my_account.balance)
+

@@ -11,7 +11,7 @@
 """
 
 
-class Product:
+class Product():
     def __init__(self, title: str, price: float):
         self.title = title
         self.price = price
@@ -24,7 +24,20 @@ class FoodProductMixin:
     def is_premium_food(self):
         return self.price > 10
 
+class FoodProduct(FoodProductMixin, Product):
+    def __init__(self, title, price):
+        super().__init__(title, price)
+
+    def get_product_info(self):
+        product_info = super().get_product_info()
+        if self.is_premium_food():
+            product_info += " (Premium)"
+        return product_info
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    premium_food_product = FoodProduct("prem", 12)
+    not_premium_food_product = FoodProduct("not prem", 8)
+
+    print(premium_food_product.get_product_info())
+    print(not_premium_food_product.get_product_info())
 
