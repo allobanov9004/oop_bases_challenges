@@ -9,8 +9,18 @@
 
 
 class Product:
-    pass  # код писать тут
+    def __init__(self, name: str, overview: str, price: float, weight: float):
+        self.name = name
+        self.overview = overview
+        self.price = price
+        self.weight = weight
+
+    def get_product_info(self):
+        return f"Информация о продукте: {self.name}, {self.overview}, {self.price}, {self.weight}"
+        
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    box = Product("box", "container", 5, 1)
+    box_data = box.get_product_info()
+    print(box_data)
