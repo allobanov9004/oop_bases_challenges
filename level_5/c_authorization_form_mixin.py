@@ -21,7 +21,7 @@ class Form:
         return len(self.password) > 8
 
 
-class AuthorizationFormMixin(Form):
+class AuthorizationFormMixin:
     def valid_form(self):
         if super().valid_form() and self.username in USERNAMES_IN_DB:
             return True

@@ -43,5 +43,5 @@ if __name__ == '__main__':
     print(file_reader.read())
     json_reader = JSONHandler('data\recipes.json')
     print(json_reader.read())
-    # csv_reader = CSVHandler('data\user_info.csv')
-    # print(csv_reader.read())
+    csv_reader = CSVHandler('data\user_info.csv')
+    print(csv_reader.read())
