@@ -9,23 +9,34 @@
 """
 
 # код писать тут
-
-
-class CreditAccount:
+class BankAccount:
     def __init__(self, owner_full_name: str, balance: float):
         self.owner_full_name = owner_full_name
         self.balance = balance
-
     def increase_balance(self, amount: float):
-        self.balance += amount
+        if amount > 0:
+            self.balance += amount
+        else: 
+            print("пополнение должно быть положительным")
 
     def decrease_balance(self, amount: float):
         self.balance -= amount
 
+class CreditAccount(BankAccount):
     def is_eligible_for_credit(self):
         return self.balance > 1000
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    bank_acc = BankAccount("John Smith", 50000)
+    print(bank_acc.balance)
+    bank_acc.increase_balance(50000)
+    print(bank_acc.balance)
+    bank_acc.decrease_balance(1000)
+    print(bank_acc.balance)
+
+    credit_acc = CreditAccount("Richard Roe", 15000)
+    print(credit_acc.is_eligible_for_credit())
+    credit_acc.decrease_balance(14500)
+    print(credit_acc.is_eligible_for_credit())
 

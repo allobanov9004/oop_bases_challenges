@@ -15,13 +15,15 @@ class BankAccount:
         self.balance = balance
 
     def increase_balance(self, income: float):
-        self.balance += income
+        if income > 0:
+            self.balance += income
 
     def decrease_balance(self, consumption: float):
         if consumption > self.balance:
             raise ValueError
         else:
-            self.balance -= consumption
+            if consumption > 0:
+                self.balance -= consumption
 
 
 if __name__ == '__main__':

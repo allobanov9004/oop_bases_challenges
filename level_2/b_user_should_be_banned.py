@@ -7,8 +7,22 @@
        Пользователя стоит забанить, если его фамилия находится в SURNAMES_TO_BAN.
 """
 
+import dataclasses
+
 SURNAMES_TO_BAN = ['Vaughn', 'Wilhelm', 'Santaros', 'Porter', 'Smith']
 
-
+@dataclasses.dataclass()
 class User:
-    pass  # код писать тут
+    name: str
+    surname: str
+    age: int
+
+    def should_be_banned(self):
+        return self.surname in SURNAMES_TO_BAN
+    
+if __name__ == '__main__':
+    john = User("John", "Smith", 30)
+    john_2 = User("John", "Doe", 25)
+
+    print(john.should_be_banned())
+    print(john_2.should_be_banned())

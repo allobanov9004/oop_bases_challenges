@@ -26,12 +26,22 @@ class FileHandler:
 
 
 class JSONHandler(FileHandler):
-    pass  # код писать тут
+    def read(self):
+        with open(self.filename, 'r') as jsonfile:
+            return json.load(jsonfile)
 
 
 class CSVHandler(FileHandler):
-    pass  # код писать тут
+    def read(self):
+        with open(self.filename, 'r') as csvfile:
+            csv_reader = csv.DictReader(csvfile, delimiter=',')
+            return [row for row in csv_reader]
 
 
 if __name__ == '__main__':
-    pass  # код писать тут
+    file_reader = FileHandler('data\text.txt')
+    print(file_reader.read())
+    json_reader = JSONHandler('data\recipes.json')
+    print(json_reader.read())
+    csv_reader = CSVHandler('data\user_info.csv')
+    print(csv_reader.read())

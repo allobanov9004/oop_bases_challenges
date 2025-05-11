@@ -27,13 +27,14 @@ class Logger:
 
 
 class GoogleLogger(Logger):
+    max_log_size = 10
     def is_valid(self):
         return self.is_log_size_valid() and bool(self.message)
 
 
 if __name__ == '__main__':
     google_logger_instance = GoogleLogger(
-        data={'user_id': 1, 'user_email': 'learn_python.gmail.com'},
+        data={'user_id': 1, 'user_email': 'learn_python@gmail.com'},
         message='User registered',
     )
     print(google_logger_instance.is_valid())
